@@ -15,6 +15,7 @@
 ### Optional: 
 1. [Why I Use Libraries like Alamofire - grokswift](https://grokswift.com/i-like-libraries/)
 2. [Cocoapods and the Case of the Squiggly Arrow](https://www.youtube.com/watch?v=x4ARXyovvPc)
+3. [CocoaPods and Pod Try - (Route85/Google via Youtube)](https://www.youtube.com/watch?annotation_id=annotation_4056188601&feature=iv&index=18&list=PLOU2XLYxmsIKGQekfmV0Qk52qLG5LU2jO&src_vid=x4ARXyovvPc&v=tKm105KJPjQ)
 
 ### Advanced:
 3. [Using a Router to Organize your API calls in Alamofire](https://grokswift.com/router/)
@@ -146,7 +147,7 @@ After each step, verify you were able to complete the exercise by opening your `
 7. Finally, specify that you'd like to use any version `4.2` and higher, not including `5.0`
 
 __Trying Pods__
-TODO
+See video linked above and try out Alamofire.
 
 ---
 
