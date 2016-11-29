@@ -358,7 +358,7 @@ Alamofire.request("https://jsonplaceholder.typicode.com/posts", method: .post, p
 ---
 ### Exercises
 
-__Part 1. __
+__Part 1.__
 
 _Estimated time: 45-60min_
 
@@ -374,6 +374,7 @@ Don't worry about efficiency, etc... just make it work as stated.
 
 __Part 2.__
 
+_Estimated time: 15min to select API & UI Pod. 4hr to complete)_
 (Paired-programming x2 = Quad Work)
 
 1. (Everyone) [Alamofire](https://github.com/Alamofire/Alamofire)
@@ -392,5 +393,6 @@ __Part 2.__
   - [View2View Transition (collection view transition)](https://github.com/naru-jpn/View2ViewTransition)
   - [Twicket Segmented Control](https://github.com/twicketapp/TwicketSegmentedControl)
   - [FaceAware](https://github.com/BeauNouvelle/FaceAware)
+  - [Emoji Text View](https://github.com/fastred/EmojiTextView)
   - [39 Open Source Swift UI Libraries](https://medium.mybridge.co/39-open-source-swift-ui-libraries-for-ios-app-development-da1f8dc61a0f#.isp8mmyal)
   - Or other...
