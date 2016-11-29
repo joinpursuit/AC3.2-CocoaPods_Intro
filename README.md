@@ -361,6 +361,7 @@ Alamofire.request("https://jsonplaceholder.typicode.com/posts", method: .post, p
 __Part 1. __
 
 _Estimated time: 45-60min_
+
 Re-implement the RandomUserAPI using Alamofire and SwiftyJson 
 
 1. Must use Alamofire to make API Calls
@@ -372,6 +373,7 @@ Re-implement the RandomUserAPI using Alamofire and SwiftyJson
 Don't worry about efficiency, etc... just make it work as stated. 
 
 __Part 2.__
+
 (Paired-programming x2 = Quad Work)
 
 1. (Everyone) [Alamofire](https://github.com/Alamofire/Alamofire)
