@@ -22,6 +22,16 @@
 4. [Semantic Versioning](http://semver.org/)
 
 ---
+### Lesson Objectives
+
+1. What is a Cocoapod?
+2. Adding Cocoapods to a project
+3. Understanding the Podfile
+4. Adjusting pod versions
+5. Introduce Alamofire as `URLRequest` replacement
+6. Explore previous requests using Alamofire
+
+---
 ### Installation 
 
 #### Pre-Requisites: Installing [RubyGems](https://rubygems.org/pages/download)
@@ -73,7 +83,8 @@ The tl;dr (from the guide):
  - Use pod update [PODNAME] only when you want to update pods to a newer version.
  
  --- 
- ### [The Podfile](https://guides.cocoapods.org/using/the-podfile.html)
+ 
+ ### The [Podfile](https://guides.cocoapods.org/using/the-podfile.html)
  
  > _The Podfile is a specification that describes the dependencies of the targets of one or more Xcode projects. The file should simply be named Podfile._
  
@@ -163,7 +174,7 @@ Additional labels for pre-release and build metadata are available as extensions
 
 ---
 
-### Using AlamoFire to make web requests
+# Using AlamoFire to make web requests
 
 Alamofire certainly can simplify a few things when making web requests, but you'll find that things look pretty familiar in terms of what needs to be done. Let's take a look at making a request on an API we've already worked with, the RandomUser API:
 
@@ -347,4 +358,11 @@ Alamofire.request("https://jsonplaceholder.typicode.com/posts", method: .post, p
 ---
 ### Exercises
 
+(Paired-programming x2 Work)
+
+1. Choose an API
+  - [RandomUser](https://randomuser.me/)
+  - [Cat API](http://thecatapi.com/)
+  - [xkcd](http://www.programmableweb.com/api/xkcd-swagger)
+  - [Ron Swanson Quotes](http://www.programmableweb.com/api/ron-swanson-quotes)
 
