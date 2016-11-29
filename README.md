@@ -360,9 +360,15 @@ Alamofire.request("https://jsonplaceholder.typicode.com/posts", method: .post, p
 
 (Paired-programming x2 Work)
 
-1. Choose an API
+1. Choose a Data API
   - [RandomUser](https://randomuser.me/)
-  - [Cat API](http://thecatapi.com/)
   - [xkcd](http://www.programmableweb.com/api/xkcd-swagger)
-  - [Ron Swanson Quotes](http://www.programmableweb.com/api/ron-swanson-quotes)
-
+  - [TacoFancy API](https://github.com/evz/tacofancy-api)
+  - [GiphyAPI](https://github.com/Giphy/GiphyAPI)
+2. Choose a Utility Pod
+  - [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
+  - [Mapper (JSON)](https://github.com/lyft/mapper)
+  - [Locksmith (Keychain)](https://github.com/matthewpalmer/Locksmith)
+3. Choose a UI-based Pod
+  - [DynamicButton](https://github.com/yannickl/DynamicButton)
+  - [SwiftyGif](https://github.com/kirualex/SwiftyGif)
