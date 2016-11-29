@@ -358,17 +358,37 @@ Alamofire.request("https://jsonplaceholder.typicode.com/posts", method: .post, p
 ---
 ### Exercises
 
-(Paired-programming x2 Work)
+__Part 1. __
 
-1. Choose a Data API
+_Estimated time: 45-60min_
+Re-implement the RandomUserAPI using Alamofire and SwiftyJson 
+
+1. Must use Alamofire to make API Calls
+2. Must use SwiftyJson to parse data
+3. Must populate simple tableview cells with random user name & photo
+4. Your query parameters must be added to your Alamo requests as `Parameter` objects, same for headers as `HTTPHeaders`
+5. Add some basic validation of responses (see Alamofire docs)
+
+Don't worry about efficiency, etc... just make it work as stated. 
+
+__Part 2.__
+(Paired-programming x2 = Quad Work)
+
+1. (Everyone) [Alamofire](https://github.com/Alamofire/Alamofire)
+2. (Everyone) [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
+3. (Quad) Choose a Data API
   - [RandomUser](https://randomuser.me/)
   - [xkcd](http://www.programmableweb.com/api/xkcd-swagger)
   - [TacoFancy API](https://github.com/evz/tacofancy-api)
-  - [GiphyAPI](https://github.com/Giphy/GiphyAPI)
-2. Choose a Utility Pod
-  - [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
-  - [Mapper (JSON)](https://github.com/lyft/mapper)
-  - [Locksmith (Keychain)](https://github.com/matthewpalmer/Locksmith)
-3. Choose a UI-based Pod
+  - [GiphyAPI (has public key but displaying gifs may be tricky](https://github.com/Giphy/GiphyAPI)
+  - [NYT](https://developer.nytimes.com/)
+  - [Github (remember this will require OAuth2 flow)](https://developer.github.com/v3/)
+  - Or other... [Programmable web](http://www.programmableweb.com/category-sdk)
+3. (Pair) Choose a UI-based Pod
   - [DynamicButton](https://github.com/yannickl/DynamicButton)
   - [SwiftyGif](https://github.com/kirualex/SwiftyGif)
+  - [View2View Transition (collection view transition)](https://github.com/naru-jpn/View2ViewTransition)
+  - [Twicket Segmented Control](https://github.com/twicketapp/TwicketSegmentedControl)
+  - [FaceAware](https://github.com/BeauNouvelle/FaceAware)
+  - [39 Open Source Swift UI Libraries](https://medium.mybridge.co/39-open-source-swift-ui-libraries-for-ios-app-development-da1f8dc61a0f#.isp8mmyal)
+  - Or other...
