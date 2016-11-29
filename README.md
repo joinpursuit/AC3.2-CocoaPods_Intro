@@ -165,4 +165,186 @@ Additional labels for pre-release and build metadata are available as extensions
 
 ### Using AlamoFire to make web requests
 
+Alamofire certainly can simplify a few things when making web requests, but you'll find that things look pretty familiar in terms of what needs to be done. Let's take a look at making a request on an API we've already worked with, the RandomUser API:
+
+```swift
+  Alamofire.request("https://randomuser.me/api").responseJSON { dataResponse in
+    print("Request: \(dataResponse.request)")
+    print("Response: \(dataResponse.response)")
+    print("Data: \(dataResponse.data)")
+    print("Result: \(dataResponse.result)")
+     
+    if let json = dataResponse.result.value {
+      print("Json: \(json)") // as the documentation points out, the json response handler makes use of JSONSerialization to parse out objects. meaning that this json is of type Any
+    }
+```
+
+The console output of the above looks like: 
+
+```
+Request: Optional(https://randomuser.me/api)
+Response: Optional(<NSHTTPURLResponse: 0x60800003bc80> { URL: https://randomuser.me/api } { status code: 200, headers {
+    "Access-Control-Allow-Origin" = "*";
+    "Cache-Control" = "no-cache";
+    "Content-Encoding" = gzip;
+    "Content-Type" = "application/json; charset=utf-8";
+    Date = "Tue, 29 Nov 2016 04:56:46 GMT";
+    Etag = "W/\"38a-gRoNGhQROcv22BV8lml6wA\"";
+    Server = "cloudflare-nginx";
+    "Set-Cookie" = "__cfduid=d3e46c15387db68d7436c9ff46bce69e01480395406; expires=Wed, 29-Nov-17 04:56:46 GMT; path=/; domain=.randomuser.me; HttpOnly";
+    Vary = "Accept-Encoding";
+    "cf-ray" = "30937999eaca21f2-EWR";
+    "x-powered-by" = Express;
+} })
+Data: Optional(906 bytes)
+Result: SUCCESS
+Json: {
+    info =     {
+        page = 1;
+        results = 1;
+        seed = 17d52321d4956f27;
+        version = "1.1";
+    };
+    results =     (
+                {
+            cell = "040-193-43-59";
+            dob = "1974-07-09 05:26:03";
+            email = "sanni.manni@example.com";
+            gender = female;
+            id =             {
+                name = HETU;
+                value = "874-3284";
+            };
+            location =             {
+                city = pornainen;
+                postcode = 84143;
+                state = "southern ostrobothnia";
+                street = "2222 fredrikinkatu";
+            };
+            login =             {
+                md5 = af62b68bfb87437fc100daa6b199f612;
+                password = orion;
+                salt = 5uafBvvs;
+                sha1 = 61848c628bc1b2ee91adfde6e622b146f48faa24;
+                sha256 = 11a0182639cc330e97d87c5dad022862371b84fd795b1c57732028376ccf772a;
+                username = greenlion205;
+            };
+            name =             {
+                first = sanni;
+                last = manni;
+                title = mrs;
+            };
+            nat = FI;
+            phone = "08-374-308";
+            picture =             {
+                large = "https://randomuser.me/api/portraits/women/68.jpg";
+                medium = "https://randomuser.me/api/portraits/med/women/68.jpg";
+                thumbnail = "https://randomuser.me/api/portraits/thumb/women/68.jpg";
+            };
+            registered = "2002-12-14 17:14:34";
+        }
+    );
+}
+```
+
+--- 
+### The importance of reading documentation
+
+By now, we understand that a certain level of error handling is needed when making web requests. But here's a deviation in how [validation is done with Alamofire](https://github.com/Alamofire/Alamofire#response-validation) as compared to how we've been doing it (for the better): 
+
+> By default, Alamofire treats any completed request to be successful, regardless of the content of the response. Calling validate before a response handler causes an error to be generated if the response had an unacceptable status code or MIME type.
+
+What does this mean for our code? Well, it just means we need to adapt to our new tool by using "automatic" validation:
+
+> Automatically validates status code within `200...299` range, and that the `Content-Type` header of the response matches the `Accept` header of the request, if one is provided
+
+```swift
+    Alamofire.request("https://randomuser.me/api").validate().responseJSON { dataResponse in
+      
+      switch dataResponse.result {
+      case .success:
+        print("Validation success!")
+      case .failure(let error):
+        print("Encountered an error: \(error)")
+      }
+      
+    }
+```
+
+```
+// on success:
+"Validation success!"
+
+// on failure by mistyping the URL:
+"Encountered an error: Error Domain=NSURLErrorDomain Code=-1003 "A server with the specified hostname could not be found." UserInfo={NSUnderlyingError=0x600000052690 {Error Domain=kCFErrorDomainCFNetwork Code=-1003 "(null)" UserInfo={_kCFStreamErrorCodeKey=0, _kCFStreamErrorDomainKey=0}}, NSErrorFailingURLStringKey=https://raner.me/api, NSErrorFailingURLKey=https://raner.me/api, _kCFStreamErrorDomainKey=0, _kCFStreamErrorCodeKey=0, NSLocalizedDescription=A server with the specified hostname could not be found.}"
+```
+---
+### Well, What about the other stuff?
+
+#### HTTP Methods: Yup covers that too!
+
+```swift
+Alamofire.request("https://jsonplaceholder.typicode.com/posts", method: .post)
+  .validate()
+  .responseJSON { response in
+    if let json = response.result.value {
+      print("Returned JSON: \(json)")
+    }
+  }
+```
+```
+// prints: 
+Returned JSON: {
+    id = 101;
+}
+```
+
+#### HTTP Body: I knew you were wondering!
+
+```     
+// Parameters is a typealias for [String : Any]
+let placeholderParams: Parameters = [
+      "title" : "Dubious Facts",
+      "body" : "Coconuts are mammals because they have hair and produce milk.",
+      "userId" : 1
+    ]
+    
+Alamofire.request("https://jsonplaceholder.typicode.com/posts", method: .post, parameters: placeholderParams, encoding: URLEncoding.methodDependent)
+  .validate()
+  .responseJSON { response in
+      if let json = response.result.value {
+        print("Returned JSON: \(json)")
+      }
+    }
+```
+```
+// prints
+Returned JSON: {
+    body = "Coconuts are mammals because they have hair and produce milk.";
+    id = 101;
+    title = "Dubious Facts";
+    userId = 1;
+}
+```
+
+Am I done blowing your mind? Not even close. 
+
+#### HTTP Headers: Brace yourselves!
+
+``` swift 
+// HTTPHeaders is type [String : String]
+let placeholderHeaders: HTTPHeaders = [
+  "Accept": "application/json"
+]
+    
+Alamofire.request("https://jsonplaceholder.typicode.com/posts", method: .post, parameters: placeholderParams, encoding: URLEncoding.methodDependent, headers: placeholderHeaders)
+  .validate()
+  .responseJSON { (response) in
+      // you get the picture
+  }
+```
+
+---
+### Exercises
+
 
