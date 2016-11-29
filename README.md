@@ -394,5 +394,6 @@ _Estimated time: 15min to select API & UI Pod. 4hr to complete)_
   - [Twicket Segmented Control](https://github.com/twicketapp/TwicketSegmentedControl)
   - [FaceAware](https://github.com/BeauNouvelle/FaceAware)
   - [Emoji Text View](https://github.com/fastred/EmojiTextView)
+  - [Awesome iOS (currated resource)](https://gitlab.com/TridentX/awesome-ios)
   - [39 Open Source Swift UI Libraries](https://medium.mybridge.co/39-open-source-swift-ui-libraries-for-ios-app-development-da1f8dc61a0f#.isp8mmyal)
   - Or other...
